@@ -1,6 +1,8 @@
-import { StyleSheet } from "react-native";
-import { SHUTTLE_GRAY } from "../../utils/colors";
+import { Dimensions, StyleSheet } from "react-native";
+import { IRON, SHUTTLE_GRAY } from "../../utils/colors";
 import { scale } from "../../utils/scales";
+
+const { height: windowHeight } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
     width: scale(67),
     height: scale(67)
   },
-  profileUserName: {
+  bigTitle: {
     fontFamily: "OverpassBold",
     fontSize: scale(16)
   },
@@ -33,7 +35,39 @@ const styles = StyleSheet.create({
     fontSize: scale(14),
     fontFamily: "OverpassRegular"
   },
-  userLineInfo: { justifyContent: "space-between", flexDirection: "row" }
+  userLineInfo: {
+    justifyContent: "space-between",
+    flexDirection: "row"
+  },
+  topInfo: {
+    width: "100%",
+    alignItems: "center",
+    paddingBottom: scale(20)
+  },
+  limitWrapper: {
+    borderColor: IRON,
+    borderWidth: 1,
+    borderRadius: 5,
+    width: "100%",
+    marginTop: windowHeight * 0.10,
+    padding: scale(5)
+  },
+  limitLineTitle: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: scale(15)
+  },
+  limitLine: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: scale(5)
+  },
+  money: {
+    color: "black",
+    fontSize: scale(16),
+    fontFamily: "OverpassBold"
+  }
 });
 
 export default styles;

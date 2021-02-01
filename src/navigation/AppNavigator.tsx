@@ -71,9 +71,6 @@ export default function AppNavigator() {
               size={19}
               titleStyle={NavStyles.defaultTitle}
               navigationBarStyle={NavStyles.defaultNavHeight}
-              renderRightButton={() => (
-                <MessagesButton onPress={() => { }} />
-              )}
             >
               <Scene
                 initial
