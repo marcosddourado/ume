@@ -83,10 +83,7 @@ function AllPublications(props: Props): JSX.Element {
 
         <View
           style={{ flexDirection: "row" }}
-          onLayout={(e: LayoutChangeEvent) => {
-            setLimitContentHeight(e.nativeEvent.layout.height);
-            console.log("aqyu limitContentHeight", limitContentHeight);
-          }}
+          onLayout={(e: LayoutChangeEvent) => setLimitContentHeight(e.nativeEvent.layout.height)}
         >
           <View style={{ width: "90%" }}>
             <View style={styles.limitLine}>
@@ -105,18 +102,12 @@ function AllPublications(props: Props): JSX.Element {
             </View>
           </View>
 
-          <View style={{ width: "10%", justifyContent: "center", alignItems: "flex-end" }}>
-            <View style={{
-              width: scale(15),
-              height: limitContentHeight,
-              backgroundColor: MAIN_COLOR
-            }}
-            >
-              <View style={{
-                width: "100%",
-                height: limit.total ? (limit.used / limit.total) * limitContentHeight : 0,
-                backgroundColor: DODGER_BLUE
-              }}
+          <View style={styles.graphWrapper}>
+            <View style={[styles.graph, { height: limitContentHeight }]}>
+              <View style={[
+                styles.usedGraph,
+                { height: limit.total ? (limit.used / limit.total) * limitContentHeight : 0 }
+              ]}
               />
             </View>
           </View>

@@ -1,5 +1,10 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { IRON, SHUTTLE_GRAY } from "../../utils/colors";
+import {
+ DODGER_BLUE,
+ IRON,
+ MAIN_COLOR,
+ SHUTTLE_GRAY
+} from "../../utils/colors";
 import { scale } from "../../utils/scales";
 
 const { height: windowHeight } = Dimensions.get("window");
@@ -67,6 +72,19 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: scale(16),
     fontFamily: "OverpassBold"
+  },
+  graphWrapper: {
+    width: "10%",
+    justifyContent: "center",
+    alignItems: "flex-end"
+  },
+  graph: {
+    width: scale(15),
+    backgroundColor: MAIN_COLOR
+  },
+  usedGraph: {
+    width: "100%",
+    backgroundColor: DODGER_BLUE
   }
 });
 
