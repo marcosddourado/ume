@@ -41,7 +41,6 @@
     "android": {
       "versionCode": 17,
       "package": "com.br.fishingtrip",
-      "googleServicesFile": "./google-services.json",
       "useNextNotificationsApi": true,
       "config": {
         "googleMaps": {
