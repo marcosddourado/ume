@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+yarn-error.log
+.expo/**/*
+.vscode
+**/dist
+src/config/apiUrl.tsx
+src/config/algolia.tsx
+src/config/firebaseConfig.tsx
