@@ -12,6 +12,8 @@ import styles from "./styles";
 import { scale } from "../../utils/scales";
 import { DODGER_BLUE, MAIN_COLOR } from "../../utils/colors";
 import { convertNumberToReal } from "../../utils/convertNumberToReal";
+import { milisecondsToDate } from "../../utils/milisecondsToDate";
+import { user } from "../../db/data";
 
 moment.locale("pt-br");
 
@@ -42,13 +44,6 @@ function AllPublications(): JSX.Element {
     <Text style={styles.content}>{info}</Text>
   </View>;
 
-  const user = {
-    name: "Marcos Dourado",
-    avatarUrl: "https://cdn.pixabay.com/photo/2012/04/25/08/46/face-41697_960_720.png",
-    email: "marcos@ume.com.br",
-    createdAt: 1612204394000
-  };
-
   const limit = { total: 2000, used: 500 };
 
   return (
@@ -65,7 +60,7 @@ function AllPublications(): JSX.Element {
       </View>
 
       {renderUserLineInfo("E-mail", user.email)}
-      {renderUserLineInfo("Data de criação", moment(user.createdAt).format("DD/MM/YYYY"))}
+      {renderUserLineInfo("Data de criação", milisecondsToDate(user.createdAt))}
 
       <View style={styles.limitWrapper}>
         <View style={styles.limitLineTitle}>

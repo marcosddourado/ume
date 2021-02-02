@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { convertNumberToReal } from "../../../utils/convertNumberToReal";
+import { convertNumberToReal } from "../../../../utils/convertNumberToReal";
 import styles from "./styles";
 
 interface CardProps {

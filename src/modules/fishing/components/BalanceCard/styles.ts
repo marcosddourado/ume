@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { scale } from "../../../utils/scales";
+import { scale } from "../../../../utils/scales";
 
 const styles = StyleSheet.create({
   wrapper: {

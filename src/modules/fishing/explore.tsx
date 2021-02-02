@@ -1,52 +1,53 @@
 import React, { useEffect } from "react";
-import { View, BackHandler } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import moment from "moment";
 import { Actions } from "react-native-router-flux";
 import _ from "lodash";
-import moment from "moment";
 import styles from "./styles";
 import KeyboarAvoidWithoutScroll from "../../components/KeyboarAvoidWithoutScroll/KeyboarAvoidWithoutScroll";
-import BalanceCard from "./components/BalanceCard";
+import BalanceCard from "./components/BalanceCard/BalanceCard";
 import { MAIN_COLOR, RED, YELLOW } from "../../utils/colors";
+import PurchaseCard from "./components/PurchaseCard/PurchaseCard";
+import { purchases } from "../../db/data";
 
 moment.locale("pt-br");
 
-interface Props {
-  textToSearch?: string;
-  searching?: boolean;
-}
-
-function Explore(props: Props): JSX.Element {
+function Explore(): JSX.Element {
   useEffect(() => {
-    if (!props.searching && !props.textToSearch) {
-      backButtonHandler();
-    }
+    Actions.refresh({
+      title: `Compras (${_.size(purchases)})`
+    });
+  }, []);
 
-    return function cleanup() {
-      BackHandler.removeEventListener("hardwareBackPress", destroyBackButton);
-    };
-  }, [props.searching, props.textToSearch]);
+  const renderItem = (listRenderItem) => {
+    const { item } = listRenderItem;
+    return <PurchaseCard unity={item.unity} date={item.date} price={item.price} />;
+  };
 
-  function backButtonHandler() {
-    BackHandler.addEventListener("hardwareBackPress", destroyBackButton);
-  }
+  const renderListHeaderComponent = () => <>
+    <View style={styles.cardsWrapper}>
+      <BalanceCard color={MAIN_COLOR} price={21.00} title="Pago" />
+      <BalanceCard color={YELLOW} price={42.00} title="A vencer" />
+      <BalanceCard color={RED} price={45.34} title="Vencidas" />
+    </View>
 
-  function destroyBackButton() {
-    // Retornar true indica que o evento não deve passar deste ouvinte.
-    return Actions.currentScene === "all_pubications";
-  }
+    <Text style={styles.title}>Lista de compras:</Text>
+  </>;
 
   return (
     <KeyboarAvoidWithoutScroll>
       <View style={styles.container}>
         <StatusBar style="dark" />
 
-        <View style={styles.cardsWrapper}>
-          <BalanceCard color={MAIN_COLOR} price={21.00} title="Pago" />
-          <BalanceCard color={YELLOW} price={42.00} title="A vencer" />
-          <BalanceCard color={RED} price={45.34} title="Vencidas" />
-        </View>
+        <FlatList
+          ListHeaderComponent={renderListHeaderComponent}
+          keyExtractor={(_, id) => `purchase_${id}`}
+          data={purchases}
+          renderItem={renderItem}
+        />
       </View>
+
     </KeyboarAvoidWithoutScroll>
   );
 }
