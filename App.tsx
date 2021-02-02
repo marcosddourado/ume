@@ -10,19 +10,8 @@ import {
   View
 } from "react-native";
 import { Provider } from "react-redux";
-import {
-  setNotificationHandler
-} from "expo-notifications";
 import AppNavigator from "./src/navigation/AppNavigator";
 import { store } from "./src/state";
-
-setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: false
-  })
-});
 
 export default class App extends React.Component {
   state = {
