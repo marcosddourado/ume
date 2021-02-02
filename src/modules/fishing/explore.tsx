@@ -36,19 +36,16 @@ function Explore(): JSX.Element {
   </>;
 
   return (
-    <KeyboarAvoidWithoutScroll>
-      <View style={styles.container}>
-        <StatusBar style="dark" />
+    <View style={styles.container}>
+      <StatusBar style="dark" />
 
-        <FlatList
-          ListHeaderComponent={renderListHeaderComponent}
-          keyExtractor={(_, id) => `purchase_${id}`}
-          data={purchases}
-          renderItem={renderItem}
-        />
-      </View>
-
-    </KeyboarAvoidWithoutScroll>
+      <FlatList
+        ListHeaderComponent={renderListHeaderComponent}
+        keyExtractor={(_, id) => `purchase_${id}`}
+        data={purchases}
+        renderItem={renderItem}
+      />
+    </View>
   );
 }
 

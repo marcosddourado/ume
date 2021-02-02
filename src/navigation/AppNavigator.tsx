@@ -4,8 +4,7 @@ import {
   Scene,
   Router,
   Stack,
-  Tabs,
-  Actions
+  Tabs
 } from "react-native-router-flux";
 import Login from "../modules/login/screens/login";
 import ForgotPassword from "../modules/login/screens/forgot_password";
@@ -18,8 +17,6 @@ import { scale } from "../utils/scales";
 import Explore from "../modules/fishing/explore";
 import AllPublications from "../modules/publications/all";
 import AllSites from "../modules/sites/all";
-import SearchButton from "../components/SearchButton/SearchButton";
-import MessagesButton from "../components/MessagesButton/MessagesButton";
 import { NavStyles } from "./DefaultHeaderProps";
 
 export default function AppNavigator() {
@@ -104,25 +101,25 @@ export default function AppNavigator() {
             />
             <Scene
               hideDrawerButton
-              tabBarLabel="Estabelecimentos"
+              tabBarLabel="Parceiros"
               key="sites"
-              title="Estabelecimentos"
+              title="Parceiros"
               icon={TabIcon}
               name="icon-sites"
               nameOutlined="icon-sites-outline"
               size={19}
               titleStyle={NavStyles.defaultTitle}
               navigationBarStyle={NavStyles.defaultNavHeight}
-              renderRightButton={() => (
-                <MessagesButton onPress={() => Actions.all_messages()} />
-              )}
             >
               <Scene
                 initial
                 key="all_sites"
                 component={() => <AllSites />}
-                renderLeftButton={() => <View style={{ paddingRight: scale(20) }}>
-                  <SearchButton />
+                renderLeftButton={() => <View style={{ padding: scale(10) }}>
+                  <Image
+                    style={{ height: "100%", aspectRatio: 1 }}
+                    source={require("../../assets/icon.png")}
+                  />
                 </View>}
               />
             </Scene>

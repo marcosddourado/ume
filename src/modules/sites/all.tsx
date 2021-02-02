@@ -1,46 +1,46 @@
-import React, { useEffect } from "react";
-import { View, BackHandler } from "react-native";
+import React from "react";
+import {
+ Text, FlatList, ScrollView, View
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Actions } from "react-native-router-flux";
-import _ from "lodash";
 import moment from "moment";
 import styles from "./styles";
-import KeyboarAvoidWithoutScroll from "../../components/KeyboarAvoidWithoutScroll/KeyboarAvoidWithoutScroll";
+import { partners } from "../../db/data";
+import PartnerCard from "./components/PartnerCard/PartnerCard";
 
 moment.locale("pt-br");
 
-interface Props {
-  textToSearch?: string;
-  searching?: boolean;
-}
-
-function AllSites(props: Props): JSX.Element {
-  useEffect(() => {
-    if (!props.searching && !props.textToSearch) {
-      backButtonHandler();
-    }
-
-    return function cleanup() {
-      BackHandler.removeEventListener("hardwareBackPress", destroyBackButton);
-    };
-  }, [props.searching, props.textToSearch]);
-
-  function backButtonHandler() {
-    BackHandler.addEventListener("hardwareBackPress", destroyBackButton);
-  }
-
-  function destroyBackButton() {
-    // Retornar true indica que o evento não deve passar deste ouvinte.
-    return Actions.currentScene === "all_pubications";
-  }
-
+function AllSites(): JSX.Element {
   return (
-    <KeyboarAvoidWithoutScroll>
-      <View style={{ backgroundColor: "#eee" }}>
-        <StatusBar style="dark" />
+    <ScrollView style={styles.container}>
+      <StatusBar style="dark" />
 
-      </View>
-    </KeyboarAvoidWithoutScroll>
+      <Text style={styles.title}>Acessórios</Text>
+      <FlatList
+        keyExtractor={(_, id) => `partner_acc_${id}`}
+        data={partners.accessories}
+        renderItem={({ item }) => <PartnerCard image={item.image} url={item.url} />}
+        horizontal
+      />
+
+      <Text style={styles.title}>Alimentos</Text>
+      <FlatList
+        keyExtractor={(_, id) => `partner_food_${id}`}
+        data={partners.food}
+        renderItem={({ item }) => <PartnerCard image={item.image} url={item.url} />}
+        horizontal
+      />
+
+      <Text style={styles.title}>Automóveis</Text>
+      <FlatList
+        keyExtractor={(_, id) => `partner_cat_${id}`}
+        data={partners.car}
+        renderItem={({ item }) => <PartnerCard image={item.image} url={item.url} />}
+        horizontal
+      />
+
+      <View style={styles.bottomPadding} />
+    </ScrollView>
   );
 }
 
