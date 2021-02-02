@@ -6,6 +6,8 @@ import _ from "lodash";
 import moment from "moment";
 import styles from "./styles";
 import KeyboarAvoidWithoutScroll from "../../components/KeyboarAvoidWithoutScroll/KeyboarAvoidWithoutScroll";
+import BalanceCard from "./components/BalanceCard";
+import { MAIN_COLOR, RED, YELLOW } from "../../utils/colors";
 
 moment.locale("pt-br");
 
@@ -36,12 +38,14 @@ function Explore(props: Props): JSX.Element {
 
   return (
     <KeyboarAvoidWithoutScroll>
-      <View style={{
-    backgroundColor: "#eee"
-  }}
-      >
+      <View style={styles.container}>
         <StatusBar style="dark" />
 
+        <View style={styles.cardsWrapper}>
+          <BalanceCard color={MAIN_COLOR} price={21.00} title="Pago" />
+          <BalanceCard color={YELLOW} price={42.00} title="A vencer" />
+          <BalanceCard color={RED} price={45.34} title="Vencidas" />
+        </View>
       </View>
     </KeyboarAvoidWithoutScroll>
   );

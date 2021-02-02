@@ -87,58 +87,20 @@ export default function AppNavigator() {
             <Scene
               initial
               renderLeftButton={() => (
-                <SearchButton onPress={() => Actions.search()} />
+                <View style={{ padding: scale(10) }}>
+                  <Image
+                    style={{ height: "100%", aspectRatio: 1 }}
+                    source={require("../../assets/icon.png")}
+                  />
+                </View>
               )}
-              renderRightButton={() => (
-                <MessagesButton onPress={() => Actions.all_messages()} />
-              )}
-              title="Pescarias"
               icon={TabIcon}
               name="icon-fishing"
               nameOutlined="icon-fishing-outline"
+              key="explore"
+              component={Explore}
               size={24}
-            >
-              <Scene
-                key="fishing_tabs"
-                hideDrawerButton
-                renderTitle={() => <FishingTripsLogo fill={SHUTTLE_GRAY} />}
-                navigationBarStyle={{
-                  borderBottomWidth: 0
-                }}
-                tabs
-                upperCaseLabel={false}
-                activeBackgroundColor="#FFF"
-                inactiveBackgroundColor="#FFF"
-                inactiveTintColor={SHUTTLE_GRAY}
-                tabBarStyle={[
-                  NavStyles.navBar,
-                  {
-                    backgroundColor: "#FFF"
-                  }
-                ]}
-                indicatorStyle={{
-                  backgroundColor: MAIN_COLOR
-                }}
-                tabBarPosition="top"
-              >
-                <Scene
-                  hideNavBar
-                  title="Descobrir"
-                  key="explore"
-                  component={Explore}
-                  onEnter={() => {
-                    Actions.popAndPush("explore", { entering: new Date().getTime() });
-                  }}
-                />
-              </Scene>
-              <Scene
-                key="search"
-                hideNavBar
-                headerLayoutPreset="center"
-                navigationBarStyle={NavStyles.defaultNavHeight}
-                component={Search}
-              />
-            </Scene>
+            />
             <Scene
               hideDrawerButton
               tabBarLabel="Estabelecimentos"

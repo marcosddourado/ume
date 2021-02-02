@@ -17,3 +17,4 @@ export const ORANGE_PEEL = "#FF9900";
 export const RED = "#FF553E";
 export const GREEN = "#00C5A1";
 export const DISABLED_TEXT_COLOR = "#ADB3B6";
+export const YELLOW = "#E8CA00";

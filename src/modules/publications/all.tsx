@@ -11,26 +11,20 @@ import { Entypo } from "@expo/vector-icons";
 import styles from "./styles";
 import { scale } from "../../utils/scales";
 import { DODGER_BLUE, MAIN_COLOR } from "../../utils/colors";
+import { convertNumberToReal } from "../../utils/convertNumberToReal";
 
 moment.locale("pt-br");
 
-interface Props {
-  textToSearch?: string;
-  searching?: boolean;
-}
-
-function AllPublications(props: Props): JSX.Element {
+function AllPublications(): JSX.Element {
   const [limitContentHeight, setLimitContentHeight] = useState(0);
 
   useEffect(() => {
-    if (!props.searching && !props.textToSearch) {
       backButtonHandler();
-    }
 
     return function cleanup() {
       BackHandler.removeEventListener("hardwareBackPress", destroyBackButton);
     };
-  }, [props.searching, props.textToSearch]);
+  }, []);
 
   function backButtonHandler() {
     BackHandler.addEventListener("hardwareBackPress", destroyBackButton);
@@ -47,8 +41,6 @@ function AllPublications(props: Props): JSX.Element {
     </Text>
     <Text style={styles.content}>{info}</Text>
   </View>;
-
-  const numberToReal = (amount: number) => `R$ ${amount.toFixed(2).replace(".", ",")}`;
 
   const user = {
     name: "Marcos Dourado",
@@ -88,16 +80,18 @@ function AllPublications(props: Props): JSX.Element {
           <View style={{ width: "90%" }}>
             <View style={styles.limitLine}>
               <Text style={styles.title}>Limite total:</Text>
-              <Text style={styles.money}>{numberToReal(limit.total)}</Text>
+              <Text style={styles.money}>{convertNumberToReal(limit.total)}</Text>
             </View>
             <View style={styles.limitLine}>
               <Text style={styles.title}>Limite já utilizado:</Text>
-              <Text style={[styles.money, { color: DODGER_BLUE }]}>{numberToReal(limit.used)}</Text>
+              <Text style={[styles.money, { color: DODGER_BLUE }]}>
+                {convertNumberToReal(limit.used)}
+              </Text>
             </View>
             <View style={styles.limitLine}>
               <Text style={styles.title}>Limite disponível:</Text>
               <Text style={[styles.money, { color: MAIN_COLOR }]}>
-                {numberToReal(limit.total - limit.used)}
+                {convertNumberToReal(limit.total - limit.used)}
               </Text>
             </View>
           </View>

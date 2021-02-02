@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: "100%",
     marginTop: windowHeight * 0.10,
-    padding: scale(5)
+    padding: scale(10)
   },
   limitLineTitle: {
     flexDirection: "row",
@@ -80,11 +80,14 @@ const styles = StyleSheet.create({
   },
   graph: {
     width: scale(15),
-    backgroundColor: MAIN_COLOR
+    backgroundColor: MAIN_COLOR,
+    borderRadius: 5
   },
   usedGraph: {
     width: "100%",
-    backgroundColor: DODGER_BLUE
+    backgroundColor: DODGER_BLUE,
+    borderTopEndRadius: 5,
+    borderTopStartRadius: 5
   }
 });
 
