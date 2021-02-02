@@ -1,14 +1,13 @@
 import React from "react";
 import { TabsProps } from "react-native-router-flux";
 import { View } from "react-native";
-import FishingTripIcon from "../../components/FishingTripIcon/FishingTripIcon";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { OSLO_GRAY } from "../../utils/colors";
 
 interface TabIconProp extends TabsProps {
   focused: boolean;
   name: string;
   nameOutlined: string;
-  size: number;
 }
 
 export default class TabIcon extends React.Component<TabIconProp, {}> {
@@ -25,19 +24,11 @@ export default class TabIcon extends React.Component<TabIconProp, {}> {
           justifyContent: "center"
         }}
       >
-        {this.props.focused ? (
-          <FishingTripIcon
-            name={`${this.props.name}`}
-            size={this.props.size}
-            color={color}
-          />
-        ) : (
-          <FishingTripIcon
-            name={`${this.props.nameOutlined}`}
-            size={this.props.size}
-            color={color}
-          />
-        )}
+        <MaterialCommunityIcons
+          name={this.props.focused ? `${this.props.name}` : `${this.props.nameOutlined}`}
+          size={22}
+          color={color}
+        />
       </View>
     );
   }

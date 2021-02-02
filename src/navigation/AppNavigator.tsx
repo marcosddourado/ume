@@ -8,19 +8,27 @@ import {
 } from "react-native-router-flux";
 import Login from "../modules/login/screens/login";
 import ForgotPassword from "../modules/login/screens/forgot_password";
-import NewPassword from "../modules/login/screens/new_password";
 import withKeyboarScrollable from "../hoc/withKeyboarScrollable";
 import withKeyboardDismiss from "../hoc/withKeyboardDismiss";
 import { MAIN_COLOR } from "../utils/colors";
 import TabIcon from "../components/TabIcon/TabIcon";
 import { scale } from "../utils/scales";
-import Explore from "../modules/fishing/explore";
-import AllPublications from "../modules/publications/all";
-import AllSites from "../modules/sites/all";
+import Shopping from "../modules/shopping";
+import Home from "../modules/home";
+import Partners from "../modules/partners";
 import { NavStyles } from "./DefaultHeaderProps";
 
 export default function AppNavigator() {
   const [initialScreen] = React.useState("login");
+
+  function renderLeftButton(): React.ReactElement<any, any> {
+    return <View style={{ padding: scale(10) }}>
+      <Image
+        style={{ height: "100%", aspectRatio: 1 }}
+        source={require("../../assets/icon.png")}
+      />
+    </View>;
+  }
 
   return (
     <Router>
@@ -38,12 +46,6 @@ export default function AppNavigator() {
           headerLayoutPreset="center"
           component={withKeyboarScrollable(ForgotPassword)}
         />
-        <Scene
-          key="new_password"
-          hideNavBar
-          headerLayoutPreset="center"
-          component={withKeyboarScrollable(NewPassword)}
-        />
         <Stack key="drawer" hideNavBar>
           <Tabs
             key="dashboard"
@@ -59,43 +61,26 @@ export default function AppNavigator() {
           >
             <Scene
               hideDrawerButton
-              key="posts"
+              key="home"
+              title="home"
+              tabBarLabel="Home"
               icon={TabIcon}
-              name="icon-posts"
-              nameOutlined="icon-posts-outline"
-              size={19}
+              name="home"
+              nameOutlined="home-outline"
               titleStyle={NavStyles.defaultTitle}
               navigationBarStyle={NavStyles.defaultNavHeight}
-            >
-              <Scene
-                initial
-                key="all_pubications"
-                title="home"
-                renderLeftButton={() => <View style={{ padding: scale(10) }}>
-                  <Image
-                    style={{ height: "100%", aspectRatio: 1 }}
-                    source={require("../../assets/icon.png")}
-                  />
-                </View>}
-                component={() => <AllPublications />}
-              />
-            </Scene>
-            <Scene
               initial
-              renderLeftButton={() => (
-                <View style={{ padding: scale(10) }}>
-                  <Image
-                    style={{ height: "100%", aspectRatio: 1 }}
-                    source={require("../../assets/icon.png")}
-                  />
-                </View>
-              )}
+              renderLeftButton={renderLeftButton}
+              component={() => <Home />}
+            />
+            <Scene
+              renderLeftButton={renderLeftButton}
               icon={TabIcon}
-              name="icon-fishing"
-              nameOutlined="icon-fishing-outline"
-              key="explore"
-              component={Explore}
-              size={24}
+              name="cart"
+              nameOutlined="cart-outline"
+              key="shopping"
+              tabBarLabel="Compras"
+              component={Shopping}
               titleStyle={NavStyles.defaultTitle}
               navigationBarStyle={NavStyles.defaultNavHeight}
             />
@@ -105,24 +90,13 @@ export default function AppNavigator() {
               key="sites"
               title="Parceiros"
               icon={TabIcon}
-              name="icon-sites"
-              nameOutlined="icon-sites-outline"
-              size={19}
+              name="heart"
+              nameOutlined="heart-outline"
               titleStyle={NavStyles.defaultTitle}
               navigationBarStyle={NavStyles.defaultNavHeight}
-            >
-              <Scene
-                initial
-                key="all_sites"
-                component={() => <AllSites />}
-                renderLeftButton={() => <View style={{ padding: scale(10) }}>
-                  <Image
-                    style={{ height: "100%", aspectRatio: 1 }}
-                    source={require("../../assets/icon.png")}
-                  />
-                </View>}
-              />
-            </Scene>
+              component={() => <Partners />}
+              renderLeftButton={renderLeftButton}
+            />
           </Tabs>
         </Stack>
       </Stack>

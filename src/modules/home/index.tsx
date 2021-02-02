@@ -17,11 +17,11 @@ import { user } from "../../db/data";
 
 moment.locale("pt-br");
 
-function AllPublications(): JSX.Element {
+function Home(): JSX.Element {
   const [limitContentHeight, setLimitContentHeight] = useState(0);
 
   useEffect(() => {
-      backButtonHandler();
+    backButtonHandler();
 
     return function cleanup() {
       BackHandler.removeEventListener("hardwareBackPress", destroyBackButton);
@@ -34,7 +34,7 @@ function AllPublications(): JSX.Element {
 
   function destroyBackButton() {
     // Retornar true indica que o evento não deve passar deste ouvinte.
-    return Actions.currentScene === "all_pubications";
+    return Actions.currentScene === "_home";
   }
 
   const renderUserLineInfo = (title: string, info: string) => <View style={styles.userLineInfo}>
@@ -106,4 +106,4 @@ function AllPublications(): JSX.Element {
   );
 }
 
-export default AllPublications;
+export default Home;

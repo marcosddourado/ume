@@ -9,9 +9,7 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import { Provider } from "react-redux";
 import AppNavigator from "./src/navigation/AppNavigator";
-import { store } from "./src/state";
 
 export default class App extends React.Component {
   state = {
@@ -64,15 +62,13 @@ export default class App extends React.Component {
       );
     }
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          <PortalProvider>
-            <WhitePortal name="modal" />
-            <AppNavigator />
-          </PortalProvider>
-        </View>
-      </Provider>
+      <View style={styles.container}>
+        {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+        <PortalProvider>
+          <WhitePortal name="modal" />
+          <AppNavigator />
+        </PortalProvider>
+      </View>
     );
   }
 }

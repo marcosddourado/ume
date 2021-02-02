@@ -2,7 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import { View, Text, SafeAreaView } from "react-native";
 import { Actions } from "react-native-router-flux";
-import FishingTripIcon from "../../../components/FishingTripIcon/FishingTripIcon";
+import { AntDesign } from "@expo/vector-icons";
 import { MAIN_COLOR, CARIBBEAN_GREEN } from "../../../utils/colors";
 import TextInput from "../../../components/TextInput/TextInput";
 import { ButtonOutline } from "../../../components/Buttons";
@@ -11,7 +11,6 @@ import ModalAlert from "../../../components/ModalUi/ModalAlert";
 import BottomHalfModal from "../../../components/BottomHalfModal/BottomHalfModal";
 import styles from "../styles";
 import { scale } from "../../../utils/scales";
-import FishingTripsLogo from "../../../components/FishingTripsLogo/FishingTripsLogo";
 
 const forgotPasswordSchema = yup.object().shape({
   email: yup
@@ -28,14 +27,11 @@ export default withFormErrorsHandler(({
   valid
 }): JSX.Element => {
   const [openModal, setOpenModal] = React.useState<boolean>(false);
-  const [loading, setLoading] = React.useState<boolean>(false);
   const handleSubmit = async () => {
     const isValid = await onSubmit(fields);
 
     if (isValid) {
-      setLoading(true);
-
-      setLoading(false);
+      setOpenModal(true);
     }
   };
 
@@ -43,7 +39,7 @@ export default withFormErrorsHandler(({
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.logoWrapper}>
-          <FishingTripsLogo fill={MAIN_COLOR} />
+          {/* <FishingTripsLogo fill={MAIN_COLOR} /> */}
         </View>
         <View style={styles.content}>
           <Text style={styles.titleBig}>Recuperação de senha</Text>
@@ -72,7 +68,7 @@ export default withFormErrorsHandler(({
         {valid && (
           <View style={styles.buttonFooter}>
             <ButtonOutline
-              title={loading ? "Enviando..." : "Enviar"}
+              title="Enviar"
               onPress={handleSubmit}
             />
           </View>
@@ -82,12 +78,12 @@ export default withFormErrorsHandler(({
         <BottomHalfModal
           modalStyle={{ height: scale(350) }}
           isOpen={openModal}
-          onClosed={() => {}}
+          onClosed={() => { }}
         >
           <ModalAlert
             icon={(
-              <FishingTripIcon
-                name="icon-confirm"
+              <AntDesign
+                name="checkcircle"
                 size={scale(35)}
                 color={CARIBBEAN_GREEN}
               />

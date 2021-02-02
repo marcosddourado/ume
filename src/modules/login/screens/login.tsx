@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { StatusBar } from "expo-status-bar";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "../styles";
-import FishingTripIcon from "../../../components/FishingTripIcon/FishingTripIcon";
 import { BLACK } from "../../../utils/colors";
 import TextInput from "../../../components/TextInput/TextInput";
 import {
@@ -64,7 +64,7 @@ export default withFormErrorsHandler(({
     setLoading(true);
     const isValid = await onSubmit(fields, loginSchema);
     if (isValid) {
-      Actions.posts();
+      Actions.drawer();
     } else {
       console.log("handleSubmit errors: ", errors);
     }
@@ -115,14 +115,14 @@ export default withFormErrorsHandler(({
                     onPress={handleShowPassword}
                   >
                     {!showPassword ? (
-                      <FishingTripIcon
-                        name="icon-eye"
-                        size={15}
+                      <MaterialCommunityIcons
+                        name="eye-outline"
+                        size={19}
                         color={BLACK}
                       />
                     ) : (
-                      <FishingTripIcon
-                        name="icon-eye-dashed"
+                      <MaterialCommunityIcons
+                        name="eye-off-outline"
                         size={19}
                         color={BLACK}
                       />
@@ -143,11 +143,6 @@ export default withFormErrorsHandler(({
               title="Esqueci minha senha"
               containerStyle={{ marginTop: scale(10) }}
               onPress={() => Actions.forgot_password()}
-            />
-            <View style={styles.buttonsLinedDiv} />
-            <ButtonOutline
-              title="Fazer Cadastro"
-              onPress={() => Actions.signup_step_one()}
             />
           </View>
         </View>

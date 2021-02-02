@@ -5,7 +5,6 @@ import moment from "moment";
 import { Actions } from "react-native-router-flux";
 import _ from "lodash";
 import styles from "./styles";
-import KeyboarAvoidWithoutScroll from "../../components/KeyboarAvoidWithoutScroll/KeyboarAvoidWithoutScroll";
 import BalanceCard from "./components/BalanceCard/BalanceCard";
 import { MAIN_COLOR, RED, YELLOW } from "../../utils/colors";
 import PurchaseCard from "./components/PurchaseCard/PurchaseCard";
@@ -13,7 +12,7 @@ import { purchases } from "../../db/data";
 
 moment.locale("pt-br");
 
-function Explore(): JSX.Element {
+function Shopping(): JSX.Element {
   useEffect(() => {
     Actions.refresh({
       title: `Compras (${_.size(purchases)})`
@@ -49,4 +48,4 @@ function Explore(): JSX.Element {
   );
 }
 
-export default Explore;
+export default Shopping;

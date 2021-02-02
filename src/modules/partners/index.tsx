@@ -10,7 +10,7 @@ import PartnerCard from "./components/PartnerCard/PartnerCard";
 
 moment.locale("pt-br");
 
-function AllSites(): JSX.Element {
+function Partners(): JSX.Element {
   return (
     <ScrollView style={styles.container}>
       <StatusBar style="dark" />
@@ -44,4 +44,4 @@ function AllSites(): JSX.Element {
   );
 }
 
-export default AllSites;
+export default Partners;
