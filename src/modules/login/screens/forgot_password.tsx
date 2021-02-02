@@ -1,9 +1,14 @@
 import React from "react";
 import * as yup from "yup";
-import { View, Text, SafeAreaView } from "react-native";
+import {
+ View,
+ Text,
+ SafeAreaView,
+ Image
+} from "react-native";
 import { Actions } from "react-native-router-flux";
 import { AntDesign } from "@expo/vector-icons";
-import { MAIN_COLOR, CARIBBEAN_GREEN } from "../../../utils/colors";
+import { CARIBBEAN_GREEN } from "../../../utils/colors";
 import TextInput from "../../../components/TextInput/TextInput";
 import { ButtonOutline } from "../../../components/Buttons";
 import withFormErrorsHandler from "../../../hoc/withFormErrorsHandler";
@@ -39,7 +44,10 @@ export default withFormErrorsHandler(({
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.logoWrapper}>
-          {/* <FishingTripsLogo fill={MAIN_COLOR} /> */}
+          <Image
+            style={styles.logo}
+            source={require("../../../../assets/icon.png")}
+          />
         </View>
         <View style={styles.content}>
           <Text style={styles.titleBig}>Recuperação de senha</Text>

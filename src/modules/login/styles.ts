@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import { scale } from "../../utils/scales";
 import { MYSTIC, SHUTTLE_GRAY } from "../../utils/colors";
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   logoWrapper: {
     alignItems: "center",
-    paddingVertical: 20
+    paddingTop: StatusBar.currentHeight + 20
   },
   content: {
     paddingTop: scale(25),
@@ -50,6 +50,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     marginBottom: scale(20)
+  },
+  logo: {
+    height: scale(80),
+    aspectRatio: 1
   }
 });
 
