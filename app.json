@@ -13,13 +13,10 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash-fishingtrip.png",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#00ABF2"
+      "backgroundColor": "#15AE4A"
     },
-    "facebookScheme": "fb791155041682867",
-    "facebookAppId": "791155041682867",
-    "facebookDisplayName": "Fishing Trips",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -28,28 +25,12 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.br.fishingtrip",
-      "buildNumber": "17",
-      "infoPlist": {
-        "NSCameraUsageDescription": "Libere acesso à câmera para que você possa inserir fotos no seu perfil, nas pescarias e nos posts.",
-        "NSPhotoLibraryUsageDescription": "Libere acesso às suas fotos para que você possa inserir fotos no seu perfil, nas pescarias e nos posts."
-      }
-    },
-    "notification": {
-      "icon": "./assets/notification.png"
+      "bundleIdentifier": "br.com.ume",
+      "buildNumber": "1",
     },
     "android": {
-      "versionCode": 17,
-      "package": "com.br.fishingtrip",
-      "useNextNotificationsApi": true,
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyAkpcb4bwZUTHQJpQupsLdTkNZC8h67Qxw"
-        },
-        "googleSignIn": {
-          "apiKey": "AIzaSyAgp5Cz7HYJtYw83DYAY5TJR73U4hzhuO0"
-        }
-      },
+      "versionCode": 1,
+      "package": "br.com.ume",
       "permissions": [
         "CAMERA",
         "RECORD_AUDIO",

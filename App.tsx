@@ -1,7 +1,6 @@
 import React from "react";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
-import { Asset } from "expo-asset";
 import { PortalProvider, WhitePortal } from "react-native-portal";
 import {
   LogBox,
@@ -35,7 +34,6 @@ export default class App extends React.Component {
   }
 
   loadResourcesAsync = async () => Promise.all([
-    Asset.loadAsync([require("./assets/fighintrip-logo-blue.png")]),
     Font.loadAsync({
       OverpassRegular: require("./assets/fonts/Overpass-Regular.ttf"),
       OverpassBlack: require("./assets/fonts/Overpass-Black.ttf"),
