@@ -14,11 +14,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "../styles";
 import { BLACK } from "../../../utils/colors";
 import TextInput from "../../../components/TextInput/TextInput";
-import {
-  ButtonSolid,
-  ButtonClear,
-  ButtonOutline
-} from "../../../components/Buttons";
+import { ButtonSolid, ButtonClear } from "../../../components/Buttons";
 import { scale } from "../../../utils/scales";
 import withFormErrorsHandler from "../../../hoc/withFormErrorsHandler";
 import { NavStyles } from "../../../navigation/DefaultHeaderProps";
