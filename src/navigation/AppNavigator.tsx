@@ -12,16 +12,14 @@ import ForgotPassword from "../modules/login/screens/forgot_password";
 import NewPassword from "../modules/login/screens/new_password";
 import withKeyboarScrollable from "../hoc/withKeyboarScrollable";
 import withKeyboardDismiss from "../hoc/withKeyboardDismiss";
-import { SHUTTLE_GRAY, MAIN_COLOR } from "../utils/colors";
+import { MAIN_COLOR } from "../utils/colors";
 import TabIcon from "../components/TabIcon/TabIcon";
 import { scale } from "../utils/scales";
 import Explore from "../modules/fishing/explore";
 import AllPublications from "../modules/publications/all";
 import AllSites from "../modules/sites/all";
-import Search from "../modules/search/search";
 import SearchButton from "../components/SearchButton/SearchButton";
 import MessagesButton from "../components/MessagesButton/MessagesButton";
-import FishingTripsLogo from "../components/FishingTripsLogo/FishingTripsLogo";
 import { NavStyles } from "./DefaultHeaderProps";
 
 export default function AppNavigator() {
@@ -75,6 +73,7 @@ export default function AppNavigator() {
               <Scene
                 initial
                 key="all_pubications"
+                title="home"
                 renderLeftButton={() => <View style={{ padding: scale(10) }}>
                   <Image
                     style={{ height: "100%", aspectRatio: 1 }}
@@ -100,6 +99,8 @@ export default function AppNavigator() {
               key="explore"
               component={Explore}
               size={24}
+              titleStyle={NavStyles.defaultTitle}
+              navigationBarStyle={NavStyles.defaultNavHeight}
             />
             <Scene
               hideDrawerButton
